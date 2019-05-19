@@ -1,0 +1,11 @@
+app.bitbucketHome=/var/atlassian/application-data/bitbucket
+app.defaultInstallDir=/opt/atlassian/bitbucket
+app.install.service$Boolean=true
+executeLauncherAction$Boolean=true
+httpPort=7990
+installation.type=INSTALL
+launch.application$Boolean=true
+portChoice=default
+serverPort=8006
+sys.adminRights$Boolean=true
+sys.languageId=en

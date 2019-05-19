@@ -1,0 +1,7 @@
+# This file should contain list of plugin IDs each on a new line.
+# Remember, incompatible plugins can prevent bitbucket from starting up.
+com.atlassian.upm.atlassian-universal-plugin-manager-plugin
+com.atlassian.troubleshooting.plugin-bitbucket
+ru.andreymarkelov.atlas.plugins.prom-bitbucket-exporter
+
+
