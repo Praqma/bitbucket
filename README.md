@@ -35,13 +35,13 @@ If you want to set it up behind a reverse proxy, use the following command:
 ```shell
 docker run \
   --name bitbucket \
-  --p 7990:7990 \
-  --p 7999:7999 \
-  --e SERVER_SECURE=true  \
-  --e SERVER_SCHEME=https \
-  --e SERVER_PROXY_PORT=443 \
-  --e SERVER_PROXY_NAME=bitbucket.example.com \
-  --d local/bitbucket:version-tag
+  --publish 7990:7990 \
+  --publish 7999:7999 \
+  --env SERVER_SECURE=true  \
+  --env SERVER_SCHEME=https \
+  --env SERVER_PROXY_PORT=443 \
+  --env SERVER_PROXY_NAME=bitbucket.example.com \
+  --detach local/bitbucket:version-tag
 ```
 
 **Note:** When setting up BitBucket behind a (GCE/AWS/other) proxy/load balancer, make sure to setup proxy/load-balancer timeouts to large values such as 300 secs or more. (The default is set to 60 secs). It is **very** important to setup these timeouts, as BitBucket (and other atlassian software) can take significant time setting up initial database. Smaller timeouts will panic BitBucket setup process and it will terminate.
