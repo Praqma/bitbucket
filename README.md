@@ -112,6 +112,20 @@ The following environment variables can be set when building your docker image.
 | SERVER_CONTEXT_PATH | The context path, if any. Best to leave blank.   | `/`|
 
 
+## Get newest version from Atlassian
+
+You can use Curl and jq to get the latest version og download link for the installed used in this repository. It makes it easy when you need to build a newer image.
+```
+curl -s https://my.atlassian.com/download/feeds/current/stash.json | sed 's\downloads(\\' | sed s'/.$//' | jq -r '.[] | select(.platform=="Unix") | "Url:" + .zipUrl, "Version:" + .version, "Edition:" + .edition'
+```
+Output :
+```
+Url:https://www.atlassian.com/software/stash/downloads/binary/atlassian-bitbucket-6.3.2-x64.bin
+Version:6.3.2
+Edition:None
+
+```
+
 ## Linter
 
 You can use a linter that analyze source code to flag programming errors, bugs, stylistic errors, and suspicious constructs. There is [dockerlinter](https://github.com/RedCoolBeans/dockerlint) , which does this quite easily.
