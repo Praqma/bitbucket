@@ -96,7 +96,7 @@ The following environment variables can be set when building your docker image.
 
 | Env name | Description                                                                                                                                                                                                                                                                                                        | Defaults                              |
 |------------------------------ |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     |---------------------------------      |
-| BITBUCKET_VERSION                  | The version number which is part of the name of the bitbucket software bin/tarball/zip.                                                                                                                                                                                                                                    | 6.3.0                                 |
+| BITBUCKET_VERSION                  | The version number which is part of the name of the bitbucket software bin/tarball/zip.                                                                                                                                                                                                                                    | 6.5.1                                 |
 | DATACENTER_MODE               | This needs to be set to 'true' if you want to setup Bitbucket in a data-center mode. Need different lincense for this                                                                                                                                                                                                      | false                                 |
 | BITBUCKET_DATACENTER_SHARE         | It needs to be a shared location, which multiple bitbucket instances can write to. This location will most probably be an NFS share, and should exist on the file system.  If it does not exist, then it will be created and chown to the bitbucket OS user.  NB: For this to work, DATACENTER_MODE should be set to true.      | /var/atlassian/bitbucket-datacenter        |
 | TZ_FILE                       | Timezone. Set the path of the correct zone you want to use for your container. Can be set at runtime as well                                                                                                                                                                                                          | /usr/share/zoneinfo/Europe/Oslo       |
@@ -121,7 +121,7 @@ curl -s https://my.atlassian.com/download/feeds/current/stash.json | sed 's\down
 Output :
 ```
 Url:https://www.atlassian.com/software/stash/downloads/binary/atlassian-bitbucket-6.3.2-x64.bin
-Version:6.3.2
+Version:6.5.1
 Edition:None
 
 ```

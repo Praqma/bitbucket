@@ -28,7 +28,7 @@ LABEL maintainer="heh@praqma.net kaz@praqma.net lel@praqma.net"
 # ----------------- 
 # The value for BITBUCKET_VERSION should be a version number,
 #   which is part of the name of the Bitbucket software bin/tarball/zip.
-ENV BITBUCKET_VERSION 6.3.0
+ENV BITBUCKET_VERSION 6.5.1
 
 
 # BITBUCKET_DOWNLOAD_URL:
