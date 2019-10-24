@@ -14,20 +14,25 @@ The source-code in this repository is released under MIT License, but the actual
 ## Getting Started
 
 ### Build:
-First, you need to build the container image.
+First, you need to build the container image locally.
 
 ```shell
-docker build -t local/bitbucket:version-tag .
+docker build -t local/bitbucket:<version-tag> .
+```
+
+Example:
+```
+docker build -t local/bitbucket:6.7.1 .
 ```
 
 ### Usage:
 In it's simplest form, this image can be used by executing:
 
 ```shell
-$ docker run -p 7990:7990 -p 7999:7999 -d local/bitbucket:version-tag
+$ docker run -p 7990:7990 -p 7999:7999 -d local/bitbucket:6.7.1
 
 CONTAINER ID        IMAGE             		COMMAND                  CREATED             STATUS              PORTS                    NAMES
-1ffda5ff3a5a        local/bitbucket:versoin-tag "/docker-entrypoin..."   About a minute ago  Up About a minute   0.0.0.0:7990->7990/tcp   stoic_panini
+1ffda5ff3a5a        local/bitbucket:6.7.1 "/docker-entrypoin..."   About a minute ago  Up About a minute   0.0.0.0:7990->7990/tcp   stoic_panini
 ```
 
 If you want to set it up behind a reverse proxy, use the following command:
@@ -41,12 +46,12 @@ docker run \
   --env SERVER_SCHEME=https \
   --env SERVER_PROXY_PORT=443 \
   --env SERVER_PROXY_NAME=bitbucket.example.com \
-  --detach local/bitbucket:version-tag
+  --detach local/bitbucket:6.7.1
 ```
 
 **Note:** When setting up BitBucket behind a (GCE/AWS/other) proxy/load balancer, make sure to setup proxy/load-balancer timeouts to large values such as 300 secs or more. (The default is set to 60 secs). It is **very** important to setup these timeouts, as BitBucket (and other atlassian software) can take significant time setting up initial database. Smaller timeouts will panic BitBucket setup process and it will terminate.
 
-If you want to use a different BitBucket version, then simply change the version number in the Dockerfile, and rebuild the image.
+If you want to use a different/newer version of BitBucket, then simply change the version number in the Dockerfile, and rebuild the image.
 
 
 ## SSL Certificates
@@ -60,7 +65,7 @@ docker run \
     --publish 7999:7999 \
     --volume /path/to/certificates:/var/atlassian/ssl \
     --detach \
-    owner/image:tag
+    local/bitbucket:6.7.1
 ```
 
 See `SSL_CERTS_PATH` ENV variable in [Dockerfile](Dockerfile).
@@ -86,7 +91,7 @@ docker run \
   -p 7990:7990  \
   -p 7999:7999  \
   -v ${PWD}/bitbucket-plugins.list:/tmp/bitbucket-plugins.list \
-  -d local/bitbucket:version-tag
+  -d local/bitbucket:6.7.1
 ```
 
 
@@ -114,13 +119,14 @@ The following environment variables can be set when building your docker image.
 
 ## Get newest version from Atlassian
 
-You can use Curl and jq to get the latest version og download link for the installed used in this repository. It makes it easy when you need to build a newer image.
+You can use `curl` and `jq` to get the latest version og download link for the installed used in this repository. It makes it easy when you need to build a newer image.
 ```
 curl -s https://my.atlassian.com/download/feeds/current/stash.json | sed 's\downloads(\\' | sed s'/.$//' | jq -r '.[] | select(.platform=="Unix") | "Url:" + .zipUrl, "Version:" + .version, "Edition:" + .edition'
 ```
+
 Output :
 ```
-Url:https://www.atlassian.com/software/stash/downloads/binary/atlassian-bitbucket-6.3.2-x64.bin
+Url:https://www.atlassian.com/software/stash/downloads/binary/atlassian-bitbucket-6.7.1-x64.bin
 Version:6.7.1
 Edition:None
 
