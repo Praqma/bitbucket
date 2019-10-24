@@ -15,7 +15,7 @@ Create a new build rule for this automated build
 
 In [https://cloud.docker.com](https://cloud.docker.com), create a new rule as follows:
 * Source Type: Tag
-* Source: /^[0-9.]+*$/
+* Source: /^[0-9.]+.*$/
 * Docker Tag: {sourceref}
 * Dockerfile location: Dockerfile
 * Build Context: / 
@@ -23,7 +23,7 @@ In [https://cloud.docker.com](https://cloud.docker.com), create a new rule as fo
 * Build Caching: On
 
 
-**Note:** The regex `/^[0-9.]+*$/` allows you to build docker images automatically for git tags such as: `6.7.1`, or `6.7.1-test` or `6.7.1.v-1.2` , etc.
+**Note:** The regex `/^[0-9.]+.*$/` allows you to build docker images automatically for git tags such as: `6.7.1`, or `6.7.1-test` or `6.7.1.v-1.2` , etc.
 
 ### Step 3: 
 * git add 
