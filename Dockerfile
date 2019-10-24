@@ -273,6 +273,5 @@ CMD ["/opt/atlassian/bitbucket/bin/start-bitbucket.sh", "-fg"]
 
 
 
-
 # Manual Build and Auto Build instructions: 
 # See: build-instructions.md
