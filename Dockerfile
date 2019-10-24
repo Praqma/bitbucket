@@ -1,4 +1,4 @@
-FROM fedora:29
+FROM fedora:30
 
 LABEL maintainer="heh@praqma.net kaz@praqma.net lel@praqma.net"
 
